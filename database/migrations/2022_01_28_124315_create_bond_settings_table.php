@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePurchasePriceSettingsTable extends Migration
+class CreateBondSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreatePurchasePriceSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchase_price_settings', function (Blueprint $table) {
+        Schema::create('bond_settings', function (Blueprint $table) {
             $table->id();
             // $table->unsignedBigInteger('user_id');
-            $table->decimal('start_amount',18,2);
-            $table->decimal('end_amount', 18,2);
-            $table->decimal('rate_applications', 18, 2);
+            $table->decimal('electronic_ins_fee', 18, 2);
             $table->decimal('korbitec_gen_fee', 18,2);
             $table->timestamps();
 
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
         });
     }
 
@@ -33,7 +32,6 @@ class CreatePurchasePriceSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchase_price_settings');
+        Schema::dropIfExists('bond_settings');
     }
 }
-

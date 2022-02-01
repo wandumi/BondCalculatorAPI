@@ -16,10 +16,10 @@ class PurchasePriceSettingResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'Start_amount' => $this->start_amount,
-            'End_amount' => $this->end_amount,
-            'Tarrif_fee' => $this->tarrif_fee,
-            'Deeds_office' => $this->deeds_office,
+            'start_amount' => $this->start_amount,
+            'end_amount' => $this->end_amount,
+            'rate_applications' => $this->rate_applications,
+            'korbitec_gen_fee' => $this->korbitec_gen_fee,
         ];
     }
 }

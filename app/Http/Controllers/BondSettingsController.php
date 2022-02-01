@@ -16,7 +16,7 @@ class BondSettingsController extends Controller
      */
     public function index()
     {
-        return BondSettingResource::collection(BondSettings::paginate());
+        return BondSettingResource::collection(BondSettings::paginate(10));
     }
 
     /**
@@ -28,7 +28,7 @@ class BondSettingsController extends Controller
     public function store(Request $request)
     {
         $bondSetting = BondSettings::create($request->only(
-            'post_petties','search_fee','rates_application'
+            'electronic_ins_fee','korbitec_gen_fee'
         )); 
 
         return response(new BondSettingResource($bondSetting), Response::HTTP_CREATED);
@@ -58,7 +58,7 @@ class BondSettingsController extends Controller
         $bondSetting = BondSettings::find($id);
 
         $bondSetting->update($request->only(
-            'post_petties','search_fee','rates_application'
+            'electronic_ins_fee','korbitec_gen_fee'
         ));
 
         return response($bondSetting, Response::HTTP_ACCEPTED);

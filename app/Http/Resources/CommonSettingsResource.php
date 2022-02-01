@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BondSettingResource extends JsonResource
+class CommonSettingsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,10 +14,13 @@ class BondSettingResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        return  [
             'id' => $this->id,
-            'electronic_ins_fee' => $this->electronic_ins_fee,
-            'korbitec_gen_fee' => $this->korbitec_gen_fee
+            'vat_amount' => $this->vat_amount,
+            'deeds_office' => $this->deeds_office,
+            'tarrif_fee' => $this->tarrif_fee,
+            'post_petties' => $this->post_petties,
+            'search_fee' => $this->search_fee,
         ];
     }
 }

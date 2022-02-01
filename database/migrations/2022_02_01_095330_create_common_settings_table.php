@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBondSettingsTable extends Migration
+class CreateCommonSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateBondSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bond_settings', function (Blueprint $table) {
+        Schema::create('common_settings', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id');
-            $table->decimal('post_petties', 18, 2);
+            $table->integer('vat_amount');
+            $table->decimal('deeds_office', 18,2);
+            $table->decimal('tarrif_fee', 18,2);
+            $table->decimal('post_petties', 18,2);
             $table->decimal('search_fee', 18,2);
-            $table->decimal('rates_application', 18,2);
             $table->timestamps();
-
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            
         });
     }
 
@@ -33,6 +31,6 @@ class CreateBondSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bond_settings');
+        Schema::dropIfExists('common_settings');
     }
 }
