@@ -15,7 +15,7 @@ class CreateCommonSettingsTable extends Migration
     {
         Schema::create('common_settings', function (Blueprint $table) {
             $table->id();
-            $table->integer('vat_amount');
+            $table->decimal('vat_amount');
             $table->decimal('deeds_office', 18,2);
             $table->decimal('tarrif_fee', 18,2);
             $table->decimal('post_petties', 18,2);

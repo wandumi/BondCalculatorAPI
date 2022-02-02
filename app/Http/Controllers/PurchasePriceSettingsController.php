@@ -62,7 +62,7 @@ class PurchasePriceSettingsController extends Controller
             'start_amount','end_amount','rate_applications','korbitec_gen_fee'
         ));
 
-        return response($PurchasePrice, Response::HTTP_ACCEPTED);
+        return new PurchasePriceSettingResource($PurchasePrice, Response::HTTP_ACCEPTED);
     }
 
     /**

@@ -61,7 +61,7 @@ class BondSettingsController extends Controller
             'electronic_ins_fee','korbitec_gen_fee'
         ));
 
-        return response($bondSetting, Response::HTTP_ACCEPTED);
+        return new BondSettingResource($bondSetting, Response::HTTP_ACCEPTED);
 
 
     }

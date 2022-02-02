@@ -69,7 +69,7 @@ class CommonSettingsController extends Controller
             'search_fee'
         ));
 
-        return response($commonSettings, Response::HTTP_ACCEPTED);
+        return new CommonSettingsResource($commonSettings, Response::HTTP_ACCEPTED);
     }
 
     /**
