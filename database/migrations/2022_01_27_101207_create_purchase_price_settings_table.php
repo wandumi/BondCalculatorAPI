@@ -18,6 +18,7 @@ class CreatePurchasePriceSettingsTable extends Migration
             // $table->unsignedBigInteger('user_id');
             $table->decimal('start_amount',18,2);
             $table->decimal('end_amount', 18,2);
+            $table->decimal('vat_amount');
             $table->decimal('rate_applications', 18, 2);
             $table->decimal('korbitec_gen_fee', 18,2);
             $table->timestamps();

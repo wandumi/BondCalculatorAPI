@@ -18,6 +18,7 @@ class PurchasePriceSettingResource extends JsonResource
             'id' => $this->id,
             'start_amount' => $this->start_amount,
             'end_amount' => $this->end_amount,
+            'vat_amount' => $this->vat_amount,
             'rate_applications' => $this->rate_applications,
             'korbitec_gen_fee' => $this->korbitec_gen_fee,
         ];

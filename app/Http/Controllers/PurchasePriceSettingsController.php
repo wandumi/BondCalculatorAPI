@@ -29,7 +29,7 @@ class PurchasePriceSettingsController extends Controller
     public function store(Request $request)
     {
         $PurchasePrice = PurchasePriceSettings::create($request->only(
-            'start_amount','end_amount','rate_applications','korbitec_gen_fee'
+            'start_amount','end_amount','vat_amount','rate_applications','korbitec_gen_fee'
         )); 
 
         return response(new PurchasePriceSettingResource($PurchasePrice), Response::HTTP_CREATED);
@@ -59,7 +59,7 @@ class PurchasePriceSettingsController extends Controller
         $PurchasePrice = PurchasePriceSettings::find($id);
 
         $PurchasePrice->update($request->only(
-            'start_amount','end_amount','rate_applications','korbitec_gen_fee'
+            'start_amount','end_amount','vat_amount','rate_applications','korbitec_gen_fee'
         ));
 
         return new PurchasePriceSettingResource($PurchasePrice, Response::HTTP_ACCEPTED);
