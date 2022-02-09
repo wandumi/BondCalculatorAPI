@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BondSettingsController;
 use App\Http\Controllers\CommonSettingsController;
 use App\Http\Controllers\PurchasePriceSettingsController;
+use App\Http\Controllers\TransferdutyController;
 use App\Models\CommonSettings;
 use App\Models\PurchasePriceSettings;
 
@@ -27,3 +28,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('bond_settings', BondSettingsController::class);
 Route::resource('purchase_settings', PurchasePriceSettingsController::class);
 Route::resource('default_settings', CommonSettingsController::class);
+Route::resource('transfer_duty', TransferdutyController::class);
