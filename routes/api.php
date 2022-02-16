@@ -20,16 +20,17 @@ use App\Http\Controllers\PurchasePriceSettingsController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::controller(AuthController::class)->group(function(){
     Route::post('/register','register');
     Route::post('/login','login');
 });
 
-
+Route::middleware('auth:sanctum')->group(function(){
+    Route::controller(AuthController::class)->group(function(){
+        Route::get('/user', 'user');
+        Route::post('/logout','logout');
+    });
+});
 
 Route::post('/tokens/create', function (Request $request) {
 
@@ -47,7 +48,6 @@ Route::post('/tokens/create', function (Request $request) {
     }
  
 });
-
 
 Route::resource('bond_settings', BondSettingsController::class);
 Route::resource('purchase_settings', PurchasePriceSettingsController::class);

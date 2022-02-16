@@ -8,6 +8,7 @@ use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Support\Facades\Cookie;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
@@ -35,14 +36,15 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        if(! Auth::attempt($request->only(
+        if(!Auth::attempt($request->only(
             'email','password'
         ))){
-            return \response([
+            return response([
                 'error' => 'Invalid credentials!'
             ], Response::HTTP_UNAUTHORIZED);
         };
        
+        /**@var User $user */
         $user = Auth::user();
 
         $token = $user->createToken('token')->plainTextToken;
@@ -50,5 +52,13 @@ class AuthController extends Controller
         return Response([
             'jwt' => $token
         ]);
+    }
+
+    public function user(Request $request){
+        return $request->user();
+    }
+
+    public function logout(){
+       Auth::logout();
     }
 }
