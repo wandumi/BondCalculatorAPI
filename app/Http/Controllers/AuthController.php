@@ -40,7 +40,7 @@ class AuthController extends Controller
             'email','password'
         ))){
             return response([
-                'error' => 'Invalid credentials!'
+                'errors' => 'Invalid credentials!'
             ], Response::HTTP_UNAUTHORIZED);
         };
        
