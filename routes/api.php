@@ -23,6 +23,7 @@ use App\Http\Controllers\PurchasePriceSettingsController;
 Route::controller(AuthController::class)->group(function(){
     Route::post('/register','register');
     Route::post('/login','login');
+    Route::get('/users','users');
 });
 
 Route::middleware('auth:sanctum')->group(function(){

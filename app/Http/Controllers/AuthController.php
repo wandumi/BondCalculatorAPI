@@ -58,6 +58,12 @@ class AuthController extends Controller
         return $request->user();
     }
 
+    public function users(Request $request) {
+        $users = User::all();
+        
+        return $users;
+    }
+
     public function logout(){
        Auth::logout();
     }
