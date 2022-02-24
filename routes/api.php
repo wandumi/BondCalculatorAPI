@@ -31,6 +31,11 @@ Route::middleware('auth:sanctum')->group(function(){
         Route::get('/user', 'user');
         Route::post('/logout','logout');
     });
+
+    Route::resource('bond_settings', BondSettingsController::class);
+    Route::resource('purchase_settings', PurchasePriceSettingsController::class);
+    Route::resource('default_settings', CommonSettingsController::class);
+    Route::resource('transfer_duty', TransferdutyController::class);
 });
 
 Route::post('/tokens/create', function (Request $request) {
@@ -50,7 +55,4 @@ Route::post('/tokens/create', function (Request $request) {
  
 });
 
-Route::resource('bond_settings', BondSettingsController::class);
-Route::resource('purchase_settings', PurchasePriceSettingsController::class);
-Route::resource('default_settings', CommonSettingsController::class);
-Route::resource('transfer_duty', TransferdutyController::class);
+
