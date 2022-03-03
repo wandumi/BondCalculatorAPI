@@ -15,7 +15,7 @@ class CreatePurchasePriceSettingsTable extends Migration
     {
         Schema::create('purchase_price_settings', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->decimal('start_amount',18,2);
             $table->decimal('end_amount', 18,2);
             $table->decimal('vat_amount');
@@ -23,7 +23,7 @@ class CreatePurchasePriceSettingsTable extends Migration
             $table->decimal('korbitec_gen_fee', 18,2);
             $table->timestamps();
 
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

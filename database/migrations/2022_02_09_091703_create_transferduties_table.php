@@ -15,12 +15,15 @@ class CreateTransferdutiesTable extends Migration
     {
         Schema::create('transferduties', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->decimal("start_amount",18,2);
             $table->decimal("end_amount",18,2);
             $table->decimal('rates');
             $table->decimal('rate_amount',18,2);
             $table->string('description',50);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

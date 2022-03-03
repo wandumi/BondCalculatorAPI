@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -38,4 +42,42 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    // public function render($request, Throwable $e)
+    // {
+    //     // if( $request->is('api*')){
+    //     //     if($e instanceof ValidationException){
+    //     //         return response([
+    //     //             'status' => 'errors',
+    //     //             'error' => $e->errors()
+    //     //         ], 422);
+    //     //     }
+
+    //     //     if($e instanceof AuthorizationException){
+    //     //         return response([
+    //     //             'status' => 'errors',
+    //     //             'error' => $e->getMessage()
+    //     //         ], 403);
+    //     //     }
+
+    //     //     if($e instanceof AuthenticationException){
+    //     //         return response([
+    //     //             'status' => 'errors',
+    //     //             'error' => $e->getMessage()
+    //     //         ], 401);
+    //     //     }
+
+    //     //     if($e instanceof ModelNotFoundException || $e instanceof NotFoundHttpException){
+    //     //         return response([
+    //     //             'status' => 'errors',
+    //     //             'error' => 'Resource Not Fount'
+    //     //         ], 404);
+    //     //     }
+
+            
+
+    //     // }
+
+    //     parent::render( $request, $e);
+    // }
 }

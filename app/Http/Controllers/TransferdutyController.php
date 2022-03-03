@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Transferduty;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\TransferdutyRequest;
 use App\Http\Resources\TransferDutyResource;
 use Symfony\Component\HttpFoundation\Response;
 
 class TransferdutyController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->authorizeResource(Transferduty::class, 'transferduty');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,9 @@ class TransferdutyController extends Controller
      */
     public function index()
     {
-        return TransferDutyResource::collection(Transferduty::paginate(10));
+        $user_id = auth::user()->id;
+
+        return TransferDutyResource::collection(Transferduty::where('user_id',$user_id)->paginate(10));
     }
 
    
@@ -26,9 +34,10 @@ class TransferdutyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TransferdutyRequest $request)
     {
-        $transferduty = Transferduty::create($request->only(
+
+        $transferduty = auth::user()->transfers()->create($request->only(
             'start_amount','end_amount','rates','rate_amount','description'
         )); 
 
@@ -53,9 +62,9 @@ class TransferdutyController extends Controller
      * @param  \App\Models\Transferduty  $transferduty
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Transferduty $transferduty)
     {
-        $transferduty = Transferduty::find($id);
+        $transferduty = Transferduty::find(Auth::user()->id);
 
         $transferduty->update($request->only(
             'start_amount','end_amount','rates','rate_amount','description'

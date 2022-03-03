@@ -38,6 +38,7 @@ Route::middleware('auth:sanctum')->group(function(){
     Route::resource('transfer_duty', TransferdutyController::class);
 });
 
+
 Route::post('/tokens/create', function (Request $request) {
 
     $request->validate([

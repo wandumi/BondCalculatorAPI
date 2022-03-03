@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Auth\AuthenticationException;
 use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
@@ -40,8 +41,11 @@ class AuthController extends Controller
             'email','password'
         ))){
             return response([
-                'errors' => 'Invalid credentials!'
+                'status' => 'failed',
+                'error' => 'Invalid credentials!'
             ], Response::HTTP_UNAUTHORIZED);
+
+            
         };
        
         /**@var User $user */
