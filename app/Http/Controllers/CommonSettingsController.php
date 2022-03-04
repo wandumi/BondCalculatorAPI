@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CommonSettings;
+use App\Http\Requests\CommonRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\CommonSettingsResource;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -26,9 +28,10 @@ class CommonSettingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CommonRequest $request)
     {
-        $commonSettings = CommonSettings::create($request->only(
+        
+        $commonSettings = auth::user()->defaults()->create($request->only(
             'vat_amount',
             'deeds_office',
             'tarrif_fee',
@@ -61,7 +64,7 @@ class CommonSettingsController extends Controller
     {
         $commonSettings = CommonSettings::find($id);
 
-        $commonSettings->update($request->only(
+        $commonSettings = auth::user()->defaults()->update($request->only(
             'vat_amount',
             'deeds_office',
             'tarrif_fee',

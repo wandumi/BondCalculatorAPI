@@ -50,7 +50,7 @@ class User extends Authenticatable
         return $this->hasMany(BondSettings::class);
     }
 
-    public function commonsettings(){
+    public function defaults(){
         return $this->hasMany(CommonSettings::class);
     }
 
@@ -58,7 +58,7 @@ class User extends Authenticatable
         return $this->hasMany(Transferduty::class);
     }
 
-    public function purchaseprice(){
+    public function purchases(){
         return $this->hasMany(PurchasePriceSettings::class);
     } 
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BondSettings;
 use Illuminate\Http\Request;
+use App\Http\Requests\BondRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\BondSettingResource;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -25,9 +27,9 @@ class BondSettingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BondRequest $request)
     {
-        $bondSetting = BondSettings::create($request->only(
+        $bondSetting = auth::user()->create($request->only(
             'electronic_ins_fee','korbitec_gen_fee'
         )); 
 

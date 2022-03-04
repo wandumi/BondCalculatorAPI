@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\PurchasePriceSettings;
+use App\Http\Requests\PurchaseRequest;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\PurchasePriceSettingResource;
 
@@ -26,9 +29,9 @@ class PurchasePriceSettingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PurchaseRequest $request)
     {
-        $PurchasePrice = PurchasePriceSettings::create($request->only(
+        $PurchasePrice = auth::user()->purchases()->create($request->only(
             'start_amount','end_amount','vat_amount','rate_applications','korbitec_gen_fee'
         )); 
 
@@ -54,7 +57,7 @@ class PurchasePriceSettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PurchaseRequest $request, $id)
     {
         $PurchasePrice = PurchasePriceSettings::find($id);
 
