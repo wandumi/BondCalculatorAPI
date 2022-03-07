@@ -26,7 +26,7 @@ class PurchaseRequest extends FormRequest
         return [
             'start_amount' => 'required|numeric',
             'end_amount' => 'required|numeric',
-            'vat_amount' => 'required|numeric',
+            'vat_amount' => 'required|numeric|max:4',
             'rate_applications' => 'numeric',
             'korbitec_gen_fee' => 'numeric'
         ];

@@ -29,7 +29,8 @@ class BondSettingsController extends Controller
      */
     public function store(BondRequest $request)
     {
-        $bondSetting = auth::user()->create($request->only(
+        
+        $bondSetting = auth::user()->bonds()->create($request->only(
             'electronic_ins_fee','korbitec_gen_fee'
         )); 
 
