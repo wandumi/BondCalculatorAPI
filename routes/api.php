@@ -26,16 +26,44 @@ Route::controller(AuthController::class)->group(function(){
     Route::get('/users','users');
 });
 
+/**
+ * Routes Accessible on the calculator 
+ * Which is on the homepage
+ */
+Route::get('bond_settings', [BondSettingsController::class, 'index']);
+Route::get('purchase_settings', [PurchasePriceSettingsController::class,'index']);
+Route::get('default_settings', [CommonSettingsController::class, 'index']);
+Route::get('transfer_duty', [TransferdutyController::class,'index']);
+
+/**
+ * Routes for Loggedin users
+ */
 Route::middleware('auth:sanctum')->group(function(){
     Route::controller(AuthController::class)->group(function(){
         Route::get('/user', 'user');
         Route::post('/logout','logout');
     });
 
-    Route::resource('bond_settings', BondSettingsController::class);
-    Route::resource('purchase_settings', PurchasePriceSettingsController::class);
-    Route::resource('default_settings', CommonSettingsController::class);
-    Route::resource('transfer_duty', TransferdutyController::class);
+    Route::get('bond_settings/{bond}', [BondSettingsController::class, 'show']);
+    Route::post('bond_settings', [BondSettingsController::class, 'store']);
+    Route::put('bond_settings/{bond}', [BondSettingsController::class, 'update']);
+    Route::post('bond_settings/{bond}', [BondSettingsController::class, 'destroy']);
+
+    Route::get('purchase_settings/{purchase}', [PurchasePriceSettingsController::class,'show']);
+    Route::post('purchase_settings', [PurchasePriceSettingsController::class,'store']);
+    Route::put('purchase_settings/{purchase}', [PurchasePriceSettingsController::class,'update']);
+    Route::post('purchase_settings/{purchase}', [PurchasePriceSettingsController::class,'destroy']);
+
+    Route::get('default_settings/{defaults}', [CommonSettingsController::class, 'show']);
+    Route::post('default_settings', [CommonSettingsController::class, 'store']);
+    Route::put('default_settings/{defaults}', [CommonSettingsController::class, 'update']);
+    Route::post('default_settings/{defaults}', [CommonSettingsController::class, 'destroy']);
+
+    Route::get('transfer_duty/{transfers}', [TransferdutyController::class,'show']);
+    Route::post('transfer_duty', [TransferdutyController::class,'store']);
+    Route::put('transfer_duty/{transfers}', [TransferdutyController::class,'update']);
+    Route::post('transfer_duty/{transfers}', [TransferdutyController::class,'destroy']);
+
 });
 
 

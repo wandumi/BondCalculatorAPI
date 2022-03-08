@@ -22,9 +22,7 @@ class TransferdutyController extends Controller
      */
     public function index()
     {
-        $user_id = auth::user()->id;
-
-        return TransferDutyResource::collection(Transferduty::where('user_id',$user_id)->paginate(10));
+        return TransferDutyResource::collection(Transferduty::where('user_id',auth::user()->id)->paginate(10));
     }
 
    
