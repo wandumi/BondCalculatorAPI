@@ -59,6 +59,7 @@ class PurchasePriceSettingsController extends Controller
      */
     public function update(PurchaseRequest $request, $id)
     {
+        
         $PurchasePrice = PurchasePriceSettings::find($id);
 
         $PurchasePrice->update($request->only(

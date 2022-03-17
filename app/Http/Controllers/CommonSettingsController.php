@@ -64,7 +64,7 @@ class CommonSettingsController extends Controller
     {
         $commonSettings = CommonSettings::find($id);
 
-        $commonSettings = auth::user()->defaults()->update($request->only(
+        $commonSettings->update($request->only(
             'vat_amount',
             'deeds_office',
             'tarrif_fee',
